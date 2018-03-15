@@ -1,0 +1,76 @@
+/* pages/recommend/recommend.wxss */
+
+text {
+  font-size: 34rpx;
+  color: #666;
+}
+
+.myview {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.title {
+  font-size: 45px;
+  text-align: center;
+}
+
+.base {
+  background-color: white;
+}
+
+.base_content {
+  margin-left: 5%;
+  width: 90%;
+}
+
+.content {
+  background-color: white;
+}
+
+.V_title {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 7px;
+  padding-top: 7px;
+}
+
+.V_Head_Right {
+  margin-left: 10px;
+}
+
+.T_Time {
+  font-size: 12px;
+}
+
+.V_word {
+  margin-bottom: 7px;
+}
+
+.I_image {
+  margin-left: 10%;
+  width: 80%;
+}
+
+.operation {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+}
+
+.like {
+  margin-left: 10%;
+  width: 30%;
+}
+
+.favorite {
+  margin-left: 20%;
+  width: 30%;
+}
+
+.HorizontalLine {
+  background-color: whitesmoke;
+  height: 12px;
+}

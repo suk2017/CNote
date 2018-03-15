@@ -1,0 +1,95 @@
+<!--pages/recommend/recommend.wxml-->
+<scroll-view>
+
+ 
+  <view class="base" wx:for="{{BookArray}}" wx:key="id">
+    <view class='base_content'>
+      <view class="content">
+        <view class="V_title">
+          <view class="V_Head">
+            <icon type="success" size="40"></icon>
+          </view>
+          <view class="V_Head_Right">
+            <view class="V_Name">
+              <text class="T_Head">{{item.name}}</text>
+            </view>
+            <view class="V_Time">
+              <text class="T_Time">{{item.time}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="V_word">
+          <text>{{item.text}}</text>
+        </view>
+        <view class="V_image">
+          <image src='{{item.img_url}}' class='I_image' mode='scaleToFill'></image>
+        </view>
+      </view>
+      <view class="operation">
+        <view class="like">
+            <button name='button_like' catchtap='click_like' id='{{index}}'>
+              <label wx:if="{{item.like}}">♥</label>
+              <label wx:else>♡</label>
+            </button>
+            <!--♥ ♡-->
+
+        </view>
+        <view class="favorite">
+            <button  name='button_favorite' catchtap='click_favorite' id='{{index}}'>
+              <label wx:if='{{item.favorite}}'>★</label>
+              <label wx:else>☆</label>
+            </button>
+            <!--★ ☆-->
+        </view>
+      </view>
+    </view>
+    <view class="HorizontalLine"></view>
+  </view>
+
+  <!--<view class="base">
+    <view class='base_content'>
+      <view class="content">
+        <view class="V_title" bindtap="clickMe">
+          <view class="V_Head">
+            <icon type="success" size="40"></icon>
+          </view>
+          <view class="V_Head_Right">
+            <view class="V_Name">
+              <text class="T_Head">读书的趣味</text>
+            </view>
+            <view class="V_Time">
+              <text class="T_Time">2017-5-3</text>
+            </view>
+          </view>
+        </view>
+        <view class="V_word" bindtap="clickMe">
+          <text>人的灵魂是用文字雕刻出来的，所以阅读意味着灵魂的成长。——段伟</text>
+        </view>
+        <view class="V_image">
+          <image src='../../image/01.jpg' class='I_image' mode='scaleToFill'></image>
+        </view>
+      </view>
+      <view class="operation">
+        <view class="like">
+          <button bindtap='click_like' name='button_like'>{{likeText}}</button>
+          <!--♥ ♡- ->
+        </view>
+        <view class="favorite">
+          <button bindtap='click_favorite' name='button_favorite'>{{favoriteText}}</button>
+          <!--★ ☆- ->
+        </view>
+      </view>
+    </view>
+    <view class="HorizontalLine"></view>
+  </view> -->
+
+
+
+
+  <text>到这里停止</text>
+
+
+
+
+
+</scroll-view>

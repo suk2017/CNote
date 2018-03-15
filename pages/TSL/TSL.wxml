@@ -1,0 +1,67 @@
+<scroll-view class='background' scroll-y="true"  style='height:{{deviceHeight}}px'>
+
+  <view wx:if='{{addNew}}' class='addInputBase'>
+    <input id='inputBox' class='addInput' bindconfirm='inputNewItem'></input>
+  </view>
+  <view wx:else class='addButtonBase'>
+    <image src='../../image/plus2.png' catchtap='addNewItem' class='addButtonImage'></image>
+  </view>
+
+  <view wx:for='{{TSList}}' catchtouchmove='itemMove' bindtouchstart='itemStartMove' id='{{index}}' class='nodeBase'>
+    <view class='horizontalLine'></view>
+    <view class='node'>
+      <view hidden='{{!removed[index]}}'>
+        <image src='../../image/recall.png' class='recallImage' bindtap='recallItem' id='{{index}}'></image>
+      </view>
+      <view hidden='{{removed[index]}}'>
+        <view wx:if='{{isOpen[index]}}' style='left:{{left[index]}}px;'>
+          <view wx:if='{{editable[index]}}' class='editItemBase'>
+            <input  class='editItemInput' bindconfirm='editItemInput' value='{{editValue}}' id='{{index}}'></input>
+          </view>
+          <view wx:else catchtap='openItem' id='{{index}}'>
+            <text>{{item.content}}</text>
+          </view>
+          <view class='time_view'>
+            <text class='time'>{{item.time}}</text>
+          </view>
+          <view class='operation_view'>
+            <image src='../../image/finish.png' class='finishButtonImage'></image>
+            <image src='../../image/edit.png' catchtap='editItem' id='{{index}}' class='editButtonImage'></image>
+            <image src='../../image/remove.png' catchtap='removeItem' id='{{index}}' class='removeButtonImage'></image>
+          </view>
+        </view>
+        <view wx:else class='node' style='left:{{left[index]}}px;'>
+          <view catchtap='openItem' id='{{index}}'>
+            <text>{{item.digest}}</text>
+          </view>
+          <view>
+            <text class='time'>{{item.time}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='horizontalLine'></view>
+  <view style='background-color:white;'>到底啦！</view>
+
+</scroll-view>
+
+
+<view style=" display:flex;" class='bottomBar'>
+  <view class='verticalLine'></view>
+  <view class='lockImageBase' catchtap='lockPanel'>
+    <image wx:if='{{lock}}' src='../../image/lock.png' class='lockImage'></image>
+    <image wx:else src='../../image/unlock.png' class='lockImage'></image>
+  </view>
+  <view class='verticalLine'></view>
+  <view class='lockImageBase'>
+    <image src='../../image/pack.png' catchtap='packItems' class='packImage'></image>
+  </view>
+  <view class='verticalLine'></view>
+  <view class='lockImageBase'>
+    <image wx:if='{{lock}}' src='../../image/lock.png' class='lockImage'></image>
+    <image wx:else src='../../image/unlock.png' class='lockImage'></image>
+  </view>
+  <view class='verticalLine'></view>
+</view>
