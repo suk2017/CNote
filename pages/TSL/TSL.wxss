@@ -1,10 +1,22 @@
 /* pages/TSL/TSL.wxss */
 
 .background {
-  background-color: #d0d0d0;
+  opacity: 0%;
   text-align: center;
   width: 90%;
   margin-left: 5%;
+}
+
+.backgroundImageBase {
+  height: 0px;
+  top: 0px;
+  position: fixed;
+  width: 100%;
+}
+
+.backgroundImage {
+  background-color: pink;
+  background-image: url(http://www.qq1234.org/uploads/allimg/150410/3_150410145324_5.jpg);
 }
 
 .nodeBase {
@@ -23,7 +35,7 @@
 
 .horizontalLine {
   opacity: 0%;
-  height: 1px;
+  height: 5px;
 }
 
 .content {
@@ -60,8 +72,8 @@
 }
 
 .removeButtonImage {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 }
 
 .editItemInput {

@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/TSL/TSL",
-    "pages/recommend/recommend"
+    "pages/recommend/recommend",
+    "pages/TSLPanel/TSLPanel"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -12,6 +12,13 @@ Page({
     img_url: 'http://www.baidu.com/img/baidu_jgylogo3.gif',
     book_name: '资本论',
   },
+
+mainPage:function(){
+  wx.navigateTo({
+    url: '../TSLPanel/TSLPanel'
+  })
+},
+
   //事件处理函数
   bindViewTap: function () {
     wx.navigateTo({

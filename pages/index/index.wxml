@@ -13,6 +13,7 @@
   </view>
 <button bindtap='netTest'>测试</button>
 <button bindtap='showRecommend'>显示推荐</button>
+<button bindtap='mainPage'>进入主页</button>
 <image src='{{img_url}}' ></image>
 
   <view class="usermotto">
