@@ -1,4 +1,5 @@
 <view class='TSLButtonBase'>
+  <text>{{msg}}</text>
   <view wx:for='{{TSLs}}'>
     <button class='TSLButton' bindtap='navigateButton' id='{{index}}'>{{item.title}}</button>
     <view class='verticalLine'></view>

@@ -98,15 +98,15 @@ Page({
       },
       {
         time: '2018/3/16 14:00:00',//时间
-        title: '生殖器的别名',
+        title: '月亮的别名',
         describe: '每天做的事情',
       },
     ],
+    msg: '请等待...',
   },
 
   navigateButton: function (e) {
     var index = e.currentTarget.id;
-    console.log('../TSL/TSL?TSL_ID=' + index);
     wx.navigateTo({
       url: '../TSL/TSL?TSL_ID=' + index,
     })
@@ -116,7 +116,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // wx.clearStorage();
+    // console.log('已清空本地存储');
+    var that = this;
+    wx.getStorageInfo({
+      success: function (res) {
+        var str = '当前使用:' + res.currentSize + 'kb' + '总共可用:' + res.limitSize + 'kb';
+        console.log(str);
+        that.setData({
+          msg: str,
+        });
+      },
+    });
   },
 
   /**

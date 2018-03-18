@@ -1,31 +1,36 @@
 <!--<scroll-view class='background' scroll-y="true" style='height:{{deviceHeight}}px'></scroll-view>-->
-<view class='backgroundImageBase' >
+
+<!--<view class='backgroundImageBase' >
   <image  class='backgroundImage' style='height:{{deviceHeight*1.5}}px'></image>
-</view>
+</view>|-->
 <view class='background'>
   <view wx:if='{{addNew}}' class='addInputBase'>
     <input id='inputBox' class='addInput' bindconfirm='inputNewItem'></input>
+
   </view>
   <view wx:else class='addButtonBase'>
     <image src='../../image/plus2.png' catchtap='addNewItem' class='addButtonImage'></image>
   </view>
 
-  <view wx:for='{{TSList}}' bindtouchmove='itemMove' bindtouchstart='itemStartMove' id='{{index}}' class='nodeBase'>
+  <view wx:for='{{_TSL_List}}' bindtouchmove='itemMove' bindtouchstart='itemStartMove' id='{{index}}' class='nodeBase'>
     <view class='horizontalLine'></view>
     <view class='node'>
       <view hidden='{{!item.removed}}'>
         <image src='../../image/recall.png' class='recallImage' bindtap='recallItem' id='{{index}}'></image>
       </view>
       <view hidden='{{item.removed}}'>
-        <view wx:if='{{item.isOpen}}' catchtap='openItem' id='{{index}}' style='left:{{left[index]}}px;'>
+        <view wx:if='{{item.isOpen}}' style='left:{{left[index]}}px;'>
           <view wx:if='{{item.editable}}'  class='editItemBase'>
             <input class='editItemInput' bindconfirm='editItemInput' value='{{editValue}}' id='{{index}}'></input>
+            <view class='time_view'>
+              <text class='time'>{{item.time}}</text>
+            </view>
           </view>
-          <view wx:else >
-            <text>{{item.content}}</text>
-          </view>
-          <view class='time_view'>
-            <text class='time'>{{item.time}}</text>
+          <view wx:else  catchtap='openItem' id='{{index}}' >
+            <text style='{{item.finished}}'>{{item.content}}</text>
+            <view class='time_view'>
+              <text class='time'>{{item.time}}</text>
+            </view>
           </view>
           <view class='operation_view'>
             <image src='../../image/{{item.finishedImage}}.png' catchtap='finishItem' id='{{index}}' class='finishButtonImage'></image>
@@ -34,7 +39,7 @@
           </view>
         </view>
         <view wx:else class='node' catchtap='openItem' id='{{index}}' style='left:{{left[index]}}px;'>
-          <view >
+          <view>
             <text style='{{item.finished}}'>{{item.digest}}</text>
           </view>
           <view class='time_view'>
