@@ -13,11 +13,11 @@ Page({
     book_name: '资本论',
   },
 
-mainPage:function(){
-  wx.navigateTo({
-    url: '../TSLPanel/TSLPanel'
-  })
-},
+  mainPage: function () {
+    wx.navigateTo({
+      url: '../TSLPanel/TSLPanel'
+    })
+  },
 
   //事件处理函数
   bindViewTap: function () {
@@ -148,7 +148,7 @@ mainPage:function(){
               bName += str[j];
             }
             console.log(bName);
-            that.setData({book_name:bName});
+            that.setData({ book_name: bName });
           }
         }
       }
@@ -165,9 +165,15 @@ mainPage:function(){
     })
   },
 
-  showRecommend:function(){
-wx.navigateTo({
-  url: '../recommend/recommend',
-})
+  showRecommend: function () {
+    wx.navigateTo({
+      url: '../recommend/recommend',
+    })
+  },
+  mainPage2: function () {
+    wx.navigateTo({
+      url: '../TSLs/TSLs',
+    })
   }
+
 })

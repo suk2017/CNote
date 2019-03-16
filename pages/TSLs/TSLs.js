@@ -1,11 +1,10 @@
+// pages/TSLs/TSLs.js
+var util = require('../../utils/util.js');
+var _TSL_ID = 0;//当前的时序链ID
+var _TSL_COUNT = 0;//当前时序链的项目ID计数 使用它区别不同项目
+var changed = false;//是否已改变 若true则需要重新保存
 
 // pages/TSL/TSL.js
-
-var util = require('../../utils/util.js');
-var _TSL_ID = 0; //当前的时序链ID
-var _TSL_COUNT = 0; //当前时序链的项目ID计数 使用它区别不同项目
-var changed = false; //是否已改变 若true则需要重新保存
-
 Page({
 
   /**
@@ -13,18 +12,18 @@ Page({
    */
   data: {
     _TSL_List: [],
-    addNew: false, //是否添加新项目
-    left: [0], //项目的左边距 用于记录位置
-    posLast: [0], //上一帧鼠标的位置 用于计算鼠标位移量delta
-    lock: true, //为true仅查看 false可删除和编辑
+    addNew: false,//是否添加新项目
+    left: [0],//项目的左边距 用于记录位置
+    posLast: [0],//上一帧鼠标的位置 用于计算鼠标位移量delta
+    lock: true,//为true仅查看 false可删除和编辑
     deviceHeight: wx.getSystemInfoSync().windowHeight * 0.9,
-    editValue: '请输入...', //时序链中项目编辑时的字符串
+    editValue: '请输入...',//时序链中项目编辑时的字符串
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(option) {
+  onLoad: function (option) {
     _TSL_ID = option.TSL_ID;
     //var _TSL_ID = option.TSL_ID;//确定要加载的是哪个时序链
     var _TSL_COUNT = 0;
@@ -47,7 +46,7 @@ Page({
     var finishedImage;
     var step = 0;
     var count = _TSL_COUNT;
-    var firstItemRemoved = '-'; //第一个被删除的项目
+    var firstItemRemoved = '-';//第一个被删除的项目
     //for (var i = count - 1; i > -1; --i) {
     for (var i = 0; i < count; ++i) {
       //首先判断是否已被移除
@@ -68,27 +67,27 @@ Page({
       finished = wx.getStorageSync(_TSL_ID + '#' + i + '#' + 'finished');
       isOpen = false;
       editable = false;
-      if (!finished || finished.length == 0) { //若未完成
+      if (!finished || finished.length == 0) {//若未完成
         finished = '';
         finishedImage = 'finish';
-      } else { //若已完成
+      } else {//若已完成
         finished = 'text-decoration:line-through;';
         finishedImage = 'finished';
       }
 
       //装载进入预制的对象数组
       objList.push({
-          id: step, //重设id
-          time: time,
-          digest: digest,
-          content: content,
-          isOpen: isOpen,
-          removed: removed,
-          editable: editable,
-          finished: finished,
-          finishedImage: finishedImage,
-        })
-        ++step;
+        id: step,//重设id
+        time: time,
+        digest: digest,
+        content: content,
+        isOpen: isOpen,
+        removed: removed,
+        editable: editable,
+        finished: finished,
+        finishedImage: finishedImage,
+      })
+      ++step;
     }
 
     //更新数据
@@ -119,7 +118,7 @@ Page({
   /**
    * 项目标记为已完成和未完成
    */
-  finishItem: function(e) {
+  finishItem: function (e) {
     var index = e.currentTarget.id;
     var _TSL_List = this.data._TSL_List;
     if (_TSL_List[index].finished == undefined) {
@@ -150,7 +149,7 @@ Page({
   /**
    * 已编辑
    */
-  editItemInput: function(e) {
+  editItemInput: function (e) {
     var str = e.detail.value;
     var index = e.currentTarget.id;
     var _TSL_List = this.data._TSL_List;
@@ -161,7 +160,8 @@ Page({
     if (str == undefined || str.length == 0) {
       _TSL_List[index].editable = false;
       console.log('未编辑：index=' + index + ' id=' + id);
-    } else {
+    }
+    else {
       //判断并提取摘要
       var digest = '';
       if (str.length > 15) {
@@ -178,11 +178,11 @@ Page({
         time: util.formatTime(new Date()),
         digest: digest,
         content: str,
-        isOpen: _TSL_List[index].isOpen, //项目是否进入详情状态
-        removed: _TSL_List[index].removed, //项目是否被移除
-        editable: false, //时序链中的项目是否处在编辑状态
-        finished: _TSL_List[index].finished, //项目是否已经完成
-        finishedImage: _TSL_List[index].finishedImage, //项目完成所使用的图片
+        isOpen: _TSL_List[index].isOpen,//项目是否进入详情状态
+        removed: _TSL_List[index].removed,//项目是否被移除
+        editable: false,//时序链中的项目是否处在编辑状态
+        finished: _TSL_List[index].finished,//项目是否已经完成
+        finishedImage: _TSL_List[index].finishedImage,//项目完成所使用的图片
       };
       console.log('已编辑：index=' + index + ' id=' + id);
     }
@@ -212,26 +212,20 @@ Page({
   /**
    * 刚刚触摸开始
    */
-  itemStartMove: function(e) {
-
-    /*if (!this.data.lock) {
-      return;
-    }
+  itemStartMove: function (e) {
+    if (!this.data.lock) { return; }
     var index = e.currentTarget.id;
     var pos = e.touches[0].clientX;
     this.data.posLast[index] = pos;
     this.setData({
       posLast: this.data.posLast,
     });
-    */
   },
 
   /**
    * 触摸进行中
    */
-  itemMove: function(e) {
-
-    /*
+  itemMove: function (e) {
     if (!this.data.lock) {
       return;
     }
@@ -243,13 +237,12 @@ Page({
       left: this.data.left,
     });
     this.data.posLast[index] = pos;
-    */
   },
 
   /**
    * 添加新项
    */
-  inputNewItem: function(e) {
+  inputNewItem: function (e) {
     var str = e.detail.value;
     var _TSL_List = this.data._TSL_List;
     //var _TSL_ID = this.data._TSL_ID;
@@ -257,7 +250,8 @@ Page({
     //若新值不合法则舍去 同时会取消编辑框
     if (str == undefined || str.length == 0) {
       console.log('未添加');
-    } else {
+    }
+    else {
       //判断并提取摘要
       var digest = '';
       if (str.length > 15) {
@@ -271,15 +265,15 @@ Page({
 
       //插入数据
       _TSL_List.unshift({
-        id: _TSL_List.length, //id和index相反
+        id: _TSL_List.length,//id和index相反
         time: util.formatTime(new Date()),
         digest: digest,
         content: str,
-        isOpen: false, //项目是否进入详情状态
-        removed: false, //项目是否被移除
-        editable: false, //时序链中的项目是否处在编辑状态
-        finished: '', //项目是否已经完成
-        finishedImage: 'finish', //项目完成所使用的图片
+        isOpen: false,//项目是否进入详情状态
+        removed: false,//项目是否被移除
+        editable: false,//时序链中的项目是否处在编辑状态
+        finished: '',//项目是否已经完成
+        finishedImage: 'finish',//项目完成所使用的图片
       });
       console.log('已添加:\'' + _TSL_List[0].content + '\'' + ' id:' + _TSL_List[0].id);
     }
@@ -288,8 +282,7 @@ Page({
       _TSL_List: _TSL_List,
       addNew: false,
     })
-    changed = true;
-    console.log('3');
+    changed = true; console.log('3');
 
 
     //存储数据
@@ -301,7 +294,7 @@ Page({
   /**
    * 将删除的项目恢复
    */
-  recallItem: function(e) {
+  recallItem: function (e) {
     var index = e.currentTarget.id;
     var _TSL_List = this.data._TSL_List;
 
@@ -315,7 +308,7 @@ Page({
   /**
    * 压缩or整理时序链
    */
-  packItems: function() {
+  packItems: function () {
     var _TSL_List = this.data._TSL_List;
 
     for (var i = 0; i < _TSL_List.length; ++i) {
@@ -340,7 +333,7 @@ Page({
   /**
    * 是否锁定面板
    */
-  lockPanel: function() {
+  lockPanel: function () {
     this.setData({
       lock: !this.data.lock,
     })
@@ -350,19 +343,15 @@ Page({
   /**
    * 欲编辑
    */
-  editItem: function(e) {
+  editItem: function (e) {
     var index = e.currentTarget.id;
     var _TSL_List = this.data._TSL_List;
     var length = _TSL_List.length;
 
-    var flag = _TSL_List[index].editable;
     for (var i = 0; i < length; ++i) {
       _TSL_List[i].editable = false;
     }
-    if (flag==false) {
-      _TSL_List[index].editable = true;
-    }
-    
+    _TSL_List[index].editable = true;
 
     this.setData({
       _TSL_List: _TSL_List,
@@ -374,7 +363,7 @@ Page({
   /**
    * 移除一项
    */
-  removeItem: function(e) {
+  removeItem: function (e) {
     var index = e.currentTarget.id;
     var _TSL_List = this.data._TSL_List;
 
@@ -384,8 +373,7 @@ Page({
     this.setData({
       _TSL_List: _TSL_List,
     });
-    changed = true;
-    console.log('4');
+    changed = true; console.log('4');
 
     //存储数据
     // wx.setStorageSync(this.data._TSL_ID + '#' + _TSL_List[index].id + '#' + 'removed', true);
@@ -396,16 +384,14 @@ Page({
   /**
    * 点击加号创建新项
    */
-  addNewItem: function() {
-    this.setData({
-      addNew: !this.data.addNew
-    });
+  addNewItem: function () {
+    this.setData({ addNew: !this.data.addNew });
   },
 
   /**
    * 点击项目打开详情
    */
-  openItem: function(e) {
+  openItem: function (e) {
     var index = parseInt(e.currentTarget.id);
     var _TSL_List = this.data._TSL_List;
 
@@ -417,7 +403,8 @@ Page({
     ``
     if (_TSL_List[index].isOpen) {
       console.log('已打开:index=' + index + ' id=' + _TSL_List[index].id);
-    } else {
+    }
+    else {
       console.log('已折叠:index=' + index + ' id=' + _TSL_List[index].id);
     }
   },
@@ -426,7 +413,7 @@ Page({
   /**
    * 保存当前链所有项目
    */
-  saveAll: function() {
+  saveAll: function () {
     var _TSL_List = this.data._TSL_List;
     //var _TSL_ID = this.data._TSL_ID;
     //var _TSL_COUNT = this.data._TSL_COUNT;
@@ -447,7 +434,7 @@ Page({
     console.log('已保存：' + '长度=' + length + '链ID=' + _TSL_ID);
   },
 
-  onLoad2: function() {
+  onLoad2: function () {
 
     var myUtil = require('../../utils/md5.js');
     var appid = '20180214000122664';
@@ -474,16 +461,14 @@ Page({
         to: to,
         sign: sign
       },
-      success: function(data) {
+      success: function (data) {
         console.log('成功');
         var uc = require('../../utils/UnicodeConvert.js');
         var result = uc.toChinese(data.data);
-        that.setData({
-          msg: result
-        });
+        that.setData({ msg: result });
         console.log(data.data);
       },
-      fail: function(res) {
+      fail: function (res) {
         console.log('失败')
       }
     });
@@ -494,21 +479,21 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
     if (changed) {
       console.log('已更改');
       this.saveAll();
@@ -519,7 +504,7 @@ Page({
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
     if (changed) {
       console.log('已更改');
       this.saveAll();
@@ -530,21 +515,21 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
 

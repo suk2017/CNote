@@ -1,0 +1,5 @@
+<!--pages/Tomato/Tomato.wxml-->
+<view class='title'>
+  <text>{{msg}}</text>
+</view>
+<canvas canvas-id="myCanvas" class="canvas"></canvas>

@@ -1,8 +1,25 @@
 <view class='TSLButtonBase'>
+  <view class='TopBar'>
+    <text class='TopButton'>创建链组</text>
+    <text class='TopButton'>创建链头</text>
+    <text class='TopButton' bindtap='goToTomato'>创建番茄钟</text>
+  </view>
   <text>{{msg}}</text>
-  <view wx:for='{{TSLs}}'>
-    <button class='TSLButton' bindtap='navigateButton' id='{{index}}'>{{item.title}}</button>
+  <view wx:for='{{TSLs}}' class='TSLbtns'>
+    <button class='TSLButton' bindtap='navigateButton' bindlongtap='longTapDelete' id='{{index}}'>{{item.content}}</button>
     <view class='verticalLine'></view>
+  </view>
+
+  <!--增加链头的按钮-->
+  <view class='addButtonBackground'>
+    <view wx:if='{{addNew}}' class='addInputBase'>
+      <input id='inputBox' class='addInput' bindconfirm='inputNewTSLItem'></input>
+    </view>
+    <view wx:else class='addButtonBase'>
+      <button catchtap='addNewTSLItem'>
+        <image src='../../image/plus2.png' class='addButtonImage'></image>
+      </button>
+    </view>
   </view>
 
 </view>

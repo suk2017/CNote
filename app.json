@@ -1,10 +1,12 @@
 {
   "pages": [
+    "pages/TSLPanel/TSLPanel",
     "pages/index/index",
     "pages/logs/logs",
     "pages/TSL/TSL",
     "pages/recommend/recommend",
-    "pages/TSLPanel/TSLPanel"
+    "pages/TSLs/TSLs",
+    "pages/Tomato/Tomato"
   ],
   "window": {
     "backgroundTextStyle": "light",

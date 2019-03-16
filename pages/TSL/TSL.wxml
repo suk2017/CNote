@@ -1,15 +1,19 @@
 <!--<scroll-view class='background' scroll-y="true" style='height:{{deviceHeight}}px'></scroll-view>-->
 
-<!--<view class='backgroundImageBase' >
-  <image  class='backgroundImage' style='height:{{deviceHeight*1.5}}px'></image>
-</view>|-->
+<view class='backgroundImageBase'>
+  <image class='backgroundImage' style='height:{{deviceHeight*1.5}}px'></image>
+</view>
 <view class='background'>
+
+ <!--新增按钮-->
   <view wx:if='{{addNew}}' class='addInputBase'>
     <input id='inputBox' class='addInput' bindconfirm='inputNewItem'></input>
-
   </view>
   <view wx:else class='addButtonBase'>
-    <image src='../../image/plus2.png' catchtap='addNewItem' class='addButtonImage'></image>
+    <button catchtap='addNewItem'>
+      <image src='../../image/plus2.png' class='addButtonImage'></image>
+    </button>
+
   </view>
 
   <view wx:for='{{_TSL_List}}' bindtouchmove='itemMove' bindtouchstart='itemStartMove' id='{{index}}' class='nodeBase'>
@@ -20,13 +24,13 @@
       </view>
       <view hidden='{{item.removed}}'>
         <view wx:if='{{item.isOpen}}' style='left:{{left[index]}}px;'>
-          <view wx:if='{{item.editable}}'  class='editItemBase'>
+          <view wx:if='{{item.editable}}' class='editItemBase'>
             <input class='editItemInput' bindconfirm='editItemInput' value='{{editValue}}' id='{{index}}'></input>
             <view class='time_view'>
               <text class='time'>{{item.time}}</text>
             </view>
           </view>
-          <view wx:else  catchtap='openItem' id='{{index}}' >
+          <view wx:else catchtap='openItem' id='{{index}}'>
             <text style='{{item.finished}}'>{{item.content}}</text>
             <view class='time_view'>
               <text class='time'>{{item.time}}</text>
@@ -52,7 +56,6 @@
 
   <view class='horizontalLine'></view>
   <view style='background-color:white;'>到底啦！</view>
-
 </view>
 
 <!--

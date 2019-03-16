@@ -3,16 +3,57 @@
 .TSLButtonBase {
   display: flex;
   justify-content: center;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
 }
-.TSLButton{
+
+.TSLbtns{
+  align-self: center;
+  align-content: center;
+  align-items: center;
+}
+
+.TSLButton {
   width: 700rpx;
 }
 
 .verticalLine {
-  width: 1%;
-  margin-left: 49%;
+  width: 0.5%;
   height: 20px;
-  background-color: pink;
+  margin-left: 49.5%;
+  background-color: lightgray;
+}
+
+.TopBar{
+  flex-direction:row;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.TopButton{
+  margin-right: 20px;
+}
+
+.addButtonBackground{  
+  text-align: center;
+}
+
+.addInputBase {
+  background-color: white;
+  margin-bottom: 20px;
+}
+
+.addInput {
+  background-color: whitesmoke;
+  height: 50px;
+}
+
+.addButtonBase {
+  background-color: white;  
+  margin-bottom: 20px;
+}
+
+.addButtonImage {
+  width: 20px;
+  height: 20px;
 }
