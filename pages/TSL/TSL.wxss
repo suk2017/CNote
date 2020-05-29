@@ -1,8 +1,7 @@
 /* pages/TSL/TSL.wxss */
 
 .background {
-  opacity: 0%;
-  text-align: center;
+  text-align: center;  
   width: 90%;
   margin-left: 5%;
 }
@@ -15,8 +14,7 @@
 }
 
 .backgroundImage {
-  background-color: black;
-  background-image: url(https://tse3.mm.bing.net/th?id=OIP.wQlyEw-qIdmLVhJracJQ1AHaFi&pid=Api&dpr=1);
+  background-color: white;
   width: 100%;
   background-repeat: repeat;
 }
@@ -135,4 +133,9 @@
 .verticalLine {
   width: 1%;
   background-color: whitesmoke;
+}
+
+.ContentText {
+  text-overflow:ellipsis;
+  word-wrap:break-word
 }

@@ -14,6 +14,7 @@ Page({
     msg: '请等待...',
     addNew: false,
     removing: false,
+    TSLs: [],
   },
 
   navigateButton: function (e) {
